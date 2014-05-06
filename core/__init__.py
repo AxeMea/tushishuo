@@ -32,3 +32,4 @@ login_manager.login_view = "/index.html"
 
 from ngu.module.sns.views import  sns_blue 
 app.register_blueprint(sns_blue)
+
