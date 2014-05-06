@@ -7,7 +7,7 @@ try:
     if ( app.debug ):
         from werkzeug.debug import DebuggedApplication
         app.wsgi_app = DebuggedApplication( app.wsgi_app, True )
-    app.run(host='0.0.0.0')
+    app.run(host='127.0.0.1')
 except:
     with open("/home/yuzheng/git/tushishuo/log.txt","w") as file:
         file.write(traceback.format_exc())
