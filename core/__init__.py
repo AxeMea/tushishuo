@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.config.from_object('config')
 
 db = SQLAlchemy(app)
-
+'''
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True)
@@ -22,7 +22,7 @@ class User(db.Model):
     def __repr__(self):
         return '<User %r>' % self.username
 db.create_all()
-
+'''
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -30,6 +30,6 @@ login_manager.login_view = "/index.html"
   
 #logging.basicConfig(filename=dirname(__file__)+"/blueprint.log", level=logging.INFO, filemode='a', format='%(asctime)s - %(levelname)s: %(message)s')
 
-from ngu.module.sns.views import  sns_blue 
-app.register_blueprint(sns_blue)
+#from ngu.module.sns.views import  sns_blue 
+#app.register_blueprint(sns_blue)
 
