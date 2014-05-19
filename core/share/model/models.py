@@ -1,4 +1,5 @@
 #encoding: utf-8
+from core import db
 from sqlalchemy import Column, String, Text,DateTime,Integer
 
 # 用户表
@@ -16,13 +17,13 @@ class User(db.Model):
 	login_latest_date = db.Column(db.DateTime)
 
 	def __init__(self, **args):
-    	self.username = args['username']
-    	self.email = args['email']
-    	self.register_date = args['register_date']
-    	self.login_latest_date = args['login_latest_date']
+    		self.username = args['username']
+    		self.email = args['email']
+    		self.register_date = args['register_date']
+    		self.login_latest_date = args['login_latest_date']
 
 	def __repr__(self):
-    	return '<User %r>' % self.username
+    		return '<User %r>' % self.username
 
 # 图片表
 class Picture(db.Model):
@@ -38,20 +39,20 @@ class Picture(db.Model):
 	# 赞
 	like = db.Column(db.Integer)
 	# 不喜欢
-	dislike = db.Column(db.Interger)
+	dislike = db.Column(db.Integer)
 	# 描述
 	note = db.Column(db.String(1024)) 
 
 	def __init__(self, **args):
-    	self.path = args['path']
-    	self.upload_user = args['upload_user']
-    	self.upload_time = args['upload_time']
-    	self.like = args['like']
-    	self.dislike = args['dislike']
-    	self.note = args['note']
+    		self.path = args['path']
+    		self.upload_user = args['upload_user']
+    		self.upload_time = args['upload_time']
+    		self.like = args['like']
+    		self.dislike = args['dislike']
+    		self.note = args['note']
 
 	def __repr__(self):
-    	return '<Picture %r>' % self.path
+    		return '<Picture %r>' % self.path
 
 # 主题表
 class Theme(db.Model):
@@ -64,12 +65,12 @@ class Theme(db.Model):
 	note = db.Column(db.String(1024))
 
 	def __init__(self, **args):
-    	self.path = args['path']
-    	self.title = args['title']
-    	self.note = args['note']
+    		self.path = args['path']
+    		self.title = args['title']
+    		self.note = args['note']
 
 	def __repr__(self):
-    	return '<Theme %r>' % self.title
+    		return '<Theme %r>' % self.title
 
 
 # 主题映射
@@ -83,12 +84,12 @@ class ThemeMapping(db.Model):
 	picture = db.Column(db.Integer)
 
 	def __init__(self, **args):
-    	self.theme = args['theme']
-    	self.picture = args['picture']
+    		self.theme = args['theme']
+    		self.picture = args['picture']
 
 
 	def __repr__(self):
-    	return '<ThemeMapping %r>' % self.theme
+    		return '<ThemeMapping %r>' % self.theme
 
 # 故事表
 class Story(db.Model):
@@ -111,20 +112,20 @@ class Story(db.Model):
 	dislike = db.Column(db.Integer)
 
 	def __init__(self, **args):
-    	self.author = args['author']
-    	self.theme = args['theme']
-    	self.update_time = args['update_time']
-    	self.content = args['content']
-    	self.like = args['like']
-    	self.title = args['title']
-    	self.dislike = args['dislike']
+    		self.author = args['author']
+    		self.theme = args['theme']
+    		self.update_time = args['update_time']
+    		self.content = args['content']
+    		self.like = args['like']
+    		self.title = args['title']
+    		self.dislike = args['dislike']
 
 	def __repr__(self):
-    	return '<Story %r>' % self.title
+    		return '<Story %r>' % self.title
 
 # 评论
 class Comment(db.Model):
-	__tablename__ == 'ngu_comment'
+	__tablename__ = 'ngu_comment'
 
 	uuid = db.Column(db.Integer, primary_key=True)
 	# 故事id
@@ -135,12 +136,12 @@ class Comment(db.Model):
 	content = db.Column(db.Text)
 
 	def __init__(self, **args):
-    	self.story = args['story']
-    	self.update_time = args['update_time']
-    	self.content = args['content']
+    		self.story = args['story']
+    		self.update_time = args['update_time']
+    		self.content = args['content']
 
 	def __repr__(self):
-    	return '<Comment %r>' % self.uuid
+    		return '<Comment %r>' % self.uuid
 
 # 关注映射
 class Follow(db.Model):
@@ -153,11 +154,11 @@ class Follow(db.Model):
 	followed = db.Column(db.Integer)
 
 	def __init__(self, **args):
-    	self.follow = args['follow']
-    	self.followed = args['followed']
+    		self.follow = args['follow']
+    		self.followed = args['followed']
 
 	def __repr__(self):
-    	return '<Follow %r>' % self.uuid
+    		return '<Follow %r>' % self.uuid
 
 # 新鲜事表
 class Feed(db.Model):
@@ -172,10 +173,10 @@ class Feed(db.Model):
 	publish_date = db.Column(db.DateTime)	
 
 	def __init__(self, **args):
-    	self.author = args['author']
-    	self.content = args['content']
-    	self.update_date = args['update_date']
+    		self.author = args['author']
+    		self.content = args['content']
+    		self.update_date = args['update_date']
 
 
 	def __repr__(self):
-    	return '<Feed %r>' % self.uuid
+    		return '<Feed %r>' % self.uuid

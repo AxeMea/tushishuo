@@ -1,1 +1,1 @@
-INIT_DATABASE = True
+INIT_DATABASE = False
