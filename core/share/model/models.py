@@ -1,4 +1,6 @@
-#encoding: utf-8   
+#encoding: utf-8
+from sqlalchemy import Column, String, Text,DateTime,Integer
+
 # 用户表
 class User(db.Model):
 	__tablename__ = 'ngu_user'
