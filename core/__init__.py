@@ -6,6 +6,7 @@ import logging,MySQLdb
 from core.config.config import *
 
 app = Flask(__name__)
+app.secret_key = 'why would I tell you my secret key?'
 
 app.config.from_object('config')
 
