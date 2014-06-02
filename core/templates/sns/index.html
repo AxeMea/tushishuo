@@ -1,8 +1,17 @@
 
 
 <h1>Sign In</h1>
-<form action="" method="post" name="login">
+
+{% if current_user.username  %}
+username: {{current_user.username}}</br> 
+img_path:{{current_user.img_path}}
+<form action='/auth/logout' method='post' name='logout'>
+	<input type = 'submit' value = 'Sign out'>
+</form>
+{% else %}
+<form action="/auth/login" method="post" name="login">
 	 <p>email: {{form.email}}<br> </p>
 	 <p>password:{{form.password}}</p>
 	 <p><input type="submit" value="Sign In"></p>
  </form>
+ {% endif %}
