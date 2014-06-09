@@ -1,17 +1,38 @@
+<html>
+	<head>
+		<title>首页</title>
+	</head>
+<body>
+	<h1>首页</h1>
+	<p>1.登录---------------------------------------------------------</p>
+	{% if current_user.username  %}
+	username: {{current_user.username}}</br> 
+	img_path:{{current_user.img_path}}
+	<form action='/auth/logout' method='post' name='logout'>
+		<input type = 'submit' value = 'Sign out'>
+	</form>
+	{% else %}
+	<form action="/auth/login" method="post" name="login">
+		 <p>email: {{login_form.email}}<br> </p>
+		 <p>password:{{login_form.password}}</p>
+		 <p><input type="submit" value="Sign In"></p>
+	 </form>
+ 	{% endif %}
+
+	<p>2.注册-----------------------------------------------------------</p>
+ 	<form action="/auth/register" method="post" name="register">
+		 email:<input type="text" name = "email"/></br>
+		 first_name:<input type="text" name = "first_name"/></br>
+		 last_name:<input type="text" name = "last_name"/></br>
+		 password:<input type="text" name = "password"/></br>
+		 password_repeat:<input type="text" name = "password_repeat"/></br>
+		 <input type="submit" value="Register"/>
+	 </form>
 
 
-<h1>Sign In</h1>
+	<p>3.最热评论-----------------------------------------------------------</p>
+	<p>4.最新故事-----------------------------------------------------------</p>
+	<p>5.热门主题-----------------------------------------------------------</p>
 
-{% if current_user.username  %}
-username: {{current_user.username}}</br> 
-img_path:{{current_user.img_path}}
-<form action='/auth/logout' method='post' name='logout'>
-	<input type = 'submit' value = 'Sign out'>
-</form>
-{% else %}
-<form action="/auth/login" method="post" name="login">
-	 <p>email: {{form.email}}<br> </p>
-	 <p>password:{{form.password}}</p>
-	 <p><input type="submit" value="Sign In"></p>
- </form>
- {% endif %}
+	 </body>
+	 </html>

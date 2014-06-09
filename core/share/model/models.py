@@ -15,12 +15,15 @@ class User(db.Model):
 	register_date = db.Column(db.DateTime)
 	# 最新登陆时间
 	login_latest_date = db.Column(db.DateTime)
+	#密码
+	password = db.Column(db.String(256))
 
 	def __init__(self, **args):
     		self.username = args['username']
     		self.email = args['email']
     		self.register_date = args['register_date']
     		self.login_latest_date = args['login_latest_date']
+		self.password = args['password']
 
 	def __repr__(self):
     		return '<User %r>' % self.username
@@ -35,7 +38,7 @@ class User(db.Model):
 		return False
 
 	def get_id(self):
-		return unicode(self.id)
+		return unicode(self.uuid)
 
 
 
@@ -148,11 +151,17 @@ class Comment(db.Model):
 	update_time = db.Column(db.DateTime)
  	# 内容
 	content = db.Column(db.Text)
+	#喜欢
+	like = db.Column(db.Integer)
+	#不喜欢
+	dislike = db.Column(db.Integer)
 
 	def __init__(self, **args):
     		self.story = args['story']
     		self.update_time = args['update_time']
     		self.content = args['content']
+    		self.like = args['like']
+    		self.dislike = args['dislike']
 
 	def __repr__(self):
     		return '<Comment %r>' % self.uuid
